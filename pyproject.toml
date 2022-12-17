@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "canto-visualisation"
+version = "0.1.0"
+description = ""
+authors = ["jessepinkman9900"]
+readme = "README.md"
+packages = [{include = "canto_visualisation"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+plotly = "^5.11.0"
+networkx = "^2.8.8"
+watchdog = "^2.2.0"
+streamlit = "1.13.0"
+web3 = "5.31.1"
+psycopg2-binary = "^2.9.5"
+sqlalchemy = "^1.4.45"
+python-dotenv = "^0.21.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.19.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
