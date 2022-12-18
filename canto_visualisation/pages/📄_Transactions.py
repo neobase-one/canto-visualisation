@@ -2,6 +2,10 @@ import streamlit as st
 from transactions.transaction_volume import TransactionVolume
 from transactions.gas import GasUsed
 
+st.set_page_config(
+      page_title="Transactions",
+)
+
 tab1, tab2 = st.tabs([
     "Transaction Volume",
     "Gas Volume",
