@@ -2,7 +2,6 @@ import streamlit as st
 import plotly.express as px
 import pandas.io.sql as sqlio
 from classes.tab import Tab
-from config.database import get_db_connection
 
 class GasUsed(Tab):
 
@@ -15,7 +14,7 @@ class GasUsed(Tab):
             WHERE block_number BETWEEN {} AND {}
             GROUP BY block_number
         """.format(start, end)
-        df = sqlio.read_sql_query(con=get_db_connection(), sql=query)
+        df = sqlio.read_sql_query(con=self.db_connection, sql=query)
         return df
 
     def create_graph(self, df):
@@ -25,8 +24,17 @@ class GasUsed(Tab):
 
     def fill_tab(self):
         try:
-            start = 1000000
-            end = 1001000
+            start = st.number_input(
+                label="Start Block Number", 
+                min_value=1, 
+                step=1,
+            )   
+            end = st.number_input(
+                label="End Block Number", 
+                min_value=start+1, 
+                step=1,
+            )   
+            
             if not start or not end:
                 st.error("Pick a start and end block for transaction visualisation")
             else:

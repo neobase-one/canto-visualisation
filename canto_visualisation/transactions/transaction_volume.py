@@ -24,8 +24,17 @@ class TransactionVolume(Tab):
 
     def fill_tab(self):
         try:
-            start = 1000000
-            end = 1001000
+            start = st.number_input(
+                label="Start Block Number", 
+                min_value=1, 
+                step=1,
+            )   
+            end = st.number_input(
+                label="End Block Number", 
+                min_value=start+1, 
+                step=1,
+            )
+
             if not start or not end:
                 st.error("Pick a start and end block for transaction visualisation")
             else:
